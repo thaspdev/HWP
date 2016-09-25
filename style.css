@@ -1,0 +1,212 @@
+@font-face {
+  font-family: lemonMilk;
+  src: url(LemonMilk.otf);
+}
+body {
+  font-family: lemonMilk;
+  margin: 0;
+  width: 100%;
+  hyphens: auto;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px 10px 20px;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #F8E00E;
+  color: #FFF;
+}
+input {
+  font-family: LemonMilk;
+  color: #4B4B4D;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 5px;
+  border-style: hidden;
+}
+section {
+  margin: 0;
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+}
+form, table {
+  background-color: #4B4B4D;
+  width: 100%;
+}
+#todo, #welcome, #homeworkDetails{
+  background-color: #FF389F;
+}
+#timetable, #whatis {
+  background-color: #FF6602;
+}
+table {
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+td, th{
+  overflow: hidden;
+  hyphens: auto;
+  text-align: center;
+  padding: 0;
+}
+td {
+  cursor: pointer;
+}
+.formButton {
+  font-family: LemonMilk;
+  background-color: #00D054;
+  color: #FFF;
+  border-style: hidden;
+  width: 100px;
+  margin: auto;
+  margin-top: 10px;
+}
+.late {
+  background-color: #F63440;
+  border-left: 2px #4B4B4D solid;
+}
+.onTime {
+  background-color: #00D054;
+  border-left: 2px #4B4B4D solid;
+}
+.urgent {
+  background-color: #0093E3;
+}
+@media screen and (max-width: 800px) {
+  .notMobile {
+    display: none;
+  }
+}
+.subForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+ #radio {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+   margin: 0;
+   width: 100%;
+ }
+ #supRad {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: flex-end;
+   margin: 0;
+ }
+ #supSupRad {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin: 0;
+ }
+section p{
+  padding: 10px 0px 10px 20px;
+  text-align: justify;
+  background-color: #4B4B4D;
+  width: 100%;
+  margin-top: 0;
+}
+#user {
+  width: 100px;
+  padding-left: 10px;
+}
+#search {
+  width: 100px;
+  text-align: right;
+  padding-right: 10px;
+}
+a {
+  color: #FFF;
+  text-decoration: none;
+}
+#loginSection {
+  background-color: #00D054;
+}
+#upExams, #signUpSection {
+  background-color: #F63440;
+}
+.inputText {
+  width: 200px;
+}
+.butDiv {
+  background-color: #4B4B4D;
+  width: 100%;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+.signButton {
+  font-family: LemonMilk;
+  color: #FFF;
+  border-style: hidden;
+  margin: 20px;
+  padding: 5px;
+  cursor: pointer;
+}
+.notConn {
+  text-indent: 20px;
+  text-align: justify;
+  margin: 0;
+  width: 98%;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+#signFormBut {
+  background-color: #F63440;
+}
+#logP {
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 0;
+}
+#logDiv {
+  background-color: #4B4B4D;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+#logB {
+  background-color: #00D054;
+}
+#signB {
+  background-color: #F63440;
+}
+#logSignB {
+  background-color: #F63440;
+  margin-top: 5px;
+  width: 100px;
+}
+.notConnh3 {
+  background-color: #4B4B4D;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+}
+#myProfile {
+  background-color: #0093E3;
+}
+#uNotAvail {
+  text-indent: 0;
+  text-align: center;
+  color: #F63440;
+  width: 200px;
+  padding: 0;
+}
