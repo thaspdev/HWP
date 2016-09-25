@@ -1,9 +1,9 @@
 @font-face {
-  font-family: lemonMilk;
-  src: url(LemonMilk.otf);
+  font-family: oswald;
+  src: url(Oswald-Regular.ttf);
 }
 body {
-  font-family: lemonMilk;
+  font-family: oswald;
   margin: 0;
   width: 100%;
   hyphens: auto;
@@ -21,7 +21,7 @@ header {
   color: #FFF;
 }
 input {
-  font-family: LemonMilk;
+  font-family: oswald;
   color: #4B4B4D;
   margin-top: 5px;
   margin-bottom: 5px;
@@ -60,7 +60,7 @@ td {
   cursor: pointer;
 }
 .formButton {
-  font-family: LemonMilk;
+  font-family: oswald;
   background-color: #00D054;
   color: #FFF;
   border-style: hidden;
@@ -152,7 +152,7 @@ a {
   justify-content: center;
 }
 .signButton {
-  font-family: LemonMilk;
+  font-family: oswald;
   color: #FFF;
   border-style: hidden;
   margin: 20px;
