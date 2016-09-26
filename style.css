@@ -200,7 +200,7 @@ a {
   margin: 0;
   text-align: center;
 }
-#myProfile {
+#myProfile, #userProfile {
   background-color: #0093E3;
 }
 #uNotAvail {
@@ -209,4 +209,7 @@ a {
   color: #F63440;
   width: 200px;
   padding: 0;
+}
+.warn {
+  background-color: #F63440;
 }
