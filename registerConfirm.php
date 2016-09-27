@@ -1,7 +1,10 @@
 <?php
   session_start();
   include("sharedParts/connectDB.php");
-  if (isset($_SESSION['regType']) AND isset($_SESSION['userID']) AND ($_SESSION['regType']=="student" OR $_SESSION['regType']=="teacher" OR $_SESSION['regType']=="staff" OR $_SESSION['regType']=="head" OR $$_SESSION['regType']=="inde")){
+  if (isset($_SESSION['regType']) AND isset($_SESSION['userID']) AND ($_SESSION['regType']=="student" OR $_SESSION['regType']=="teacher" OR $_SESSION['regType']=="staff" OR $_SESSION['regType']=="head" OR $_SESSION['regType']=="inde")){
+    if ($_SESSION['regType']=="inde") {
+      header('Location: index.php');
+    }
   } else {
     header('Location: signup.php?uncomplete=1');
   }
@@ -13,7 +16,7 @@
   </head>
   <body>
     <?php include("sharedParts/header.php"); ?>
-    <section id="1moreStep">
+    <section id="oneMoreStep">
       <h2>Just one more step ...</h2>
       <?php
       if ($_SESSION['regType'] == "student") {
@@ -47,7 +50,7 @@
         ?>
         <p>So, you're a head teacher ... Please tell us the name of your school to complete your registration :</p>
         <form action="postRegisterConfirm.php" method="post">
-          <label for="schoolNameIn">Your school's ID :</label>
+          <label for="schoolNameIn">Your school's name :</label>
           <input class="inputText" type="text" name="schoolNameIn" id="schoolNameIn">
           <input type="submit" name="submitButton" value="Send" class="formButton">
         </form>

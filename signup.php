@@ -57,18 +57,18 @@
         </div>
         <div id="supSupRad">
             <label for="isWhatIn">You are :</label>
-            <div id="supRad">
-            <div id="radio"><label for="isStuIn">a student</label>
-            <input class="inputRad" type="radio" name="isWhatIn" id="isStuIn" value="student"></input></div>
-            <div id="radio"><label for="isTeaIn">a teacher</label>
-            <input class="inputRad" type="radio" name="isWhatIn" id="isTeaIn" value="teacher"></input></div>
-            <div id="radio"><label for="isStaIn">a member of the staff</label>
-            <input class="inputRad" type="radio" name="isWhatIn" id="isStaIn" value="staff"></input></div>
-            <div id="radio"><label for="isHeaIn">a head teacher</label>
-            <input class="inputRad" type="radio" name="isWhatIn" id="isHeaIn" value="head"></input></div>
-            <div id="radio"><label for="isIndIn">an independent user</label>
-            <input class="inputRad" type="radio" name="isWhatIn" id="isIndIn" value="head"></input></div>
-          </div>
+              <div id="supRad">
+              <div id="radio"><label for="isStuIn">a student</label>
+              <input class="inputRad" type="radio" name="isWhatIn" id="isStuIn" value="student"></input></div>
+              <div id="radio"><label for="isTeaIn">a teacher</label>
+              <input class="inputRad" type="radio" name="isWhatIn" id="isTeaIn" value="teacher"></input></div>
+              <div id="radio"><label for="isStaIn">a member of the staff</label>
+              <input class="inputRad" type="radio" name="isWhatIn" id="isStaIn" value="staff"></input></div>
+              <div id="radio"><label for="isHeaIn">a head teacher</label>
+              <input class="inputRad" type="radio" name="isWhatIn" id="isHeaIn" value="head"></input></div>
+              <div id="radio"><label for="isIndIn">an independent user</label>
+              <input class="inputRad" type="radio" name="isWhatIn" id="isIndIn" value="inde"></input></div>
+            </div>
         </div>
         <input type="submit" name="submitButton" value="Sign Up" class="formButton" id="signFormBut"></input>
       </form>

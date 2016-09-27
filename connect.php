@@ -5,7 +5,7 @@
   $UserConnectAnswer->execute(array(htmlspecialchars($_POST['usernameIn'])));
   $UConnectTest = $UserConnectAnswer->fetch();
   if (isset($UConnectTest['username'])){
-    if (sha1($UConnectTest['salt'] . $_POST['passwordIn'])==$UConnectTest['hash']) {
+    if (hash('sha512', $UConnectTest['salt'] . $_POST['passwordIn'])==$UConnectTest['hash']) {
       $UserConAnswer = $DB->prepare('SELECT * FROM users WHERE username = ?');
       $UserConAnswer->execute(array(htmlspecialchars($_POST['usernameIn'])));
       $UConnectData = $UserConAnswer->fetch();
