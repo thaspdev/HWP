@@ -19,10 +19,24 @@
         <div class="subForm">
           <label for="usernameIn">Username :</label>
           <input class="inputText" type="text" name="usernameIn" id="usernameIn"></input>
+          <?php
+            if (isset($_GET['failed']) && $_GET['failed']==1) {
+          ?>
+            <p class="pWarn">This username does not exist.</p>
+          <?php
+            }
+          ?>
         </div>
         <div class="subForm">
           <label for="passwordIn">Password :</label>
           <input class="inputText" type="password" name="passwordIn" id="passwordIn"></input>
+          <?php
+            if (isset($_GET['failed']) && $_GET['failed']==2) {
+          ?>
+            <p class="pWarn">The username and the password do not match.</p>
+          <?php
+            }
+          ?>
         </div>
         <input type="submit" name="submitButton" value="Log in" class="formButton">
       </form>
