@@ -62,10 +62,9 @@
       } else if ($isHea == 1) {
         $_SESSION['regType'] = "head";
       } else if ($isInd == 1) {
-       $_SESSION['regType'] = "inde";
+        $_SESSION['regType'] = "inde";
       }
       header('Location: registerConfirm.php';
-
     }
   } else {
     header('Location: signup.php?uncomplete=1');

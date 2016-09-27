@@ -203,7 +203,7 @@ a {
 #myProfile, #userProfile {
   background-color: #0093E3;
 }
-#uNotAvail {
+.pWarn {
   text-indent: 0;
   text-align: center;
   color: #F63440;

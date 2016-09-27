@@ -19,7 +19,7 @@
             {
               if($_GET['uncomplete'])
               {
-                echo '<p id="uNotAvail">You did not fill all the fields correctly. Please try again.</p>';
+                echo '<p class="pWarn">You did not fill all the fields correctly. Please try again.</p>';
               }
             }
           ?>
@@ -30,7 +30,7 @@
           {
             if($_GET['uNameNotAvail'])
             {
-               echo '<p id="uNotAvail">This username is not available. Please try another one.</p>';
+               echo '<p class="pWarn">This username is not available. Please try another one.</p>';
             }
           }
           ?>
