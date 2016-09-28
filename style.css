@@ -121,15 +121,44 @@ section p{
   width: 100%;
   margin-top: 0;
 }
+/*HEADER*/
 #user {
   width: 100px;
   padding-left: 10px;
 }
-#search {
+#addSearch {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   width: 100px;
   text-align: right;
   padding-right: 10px;
+  height: 86.86px;
 }
+#add {
+  display: flex;
+  align-items: center;
+  height: 86.86px;
+  padding-right: 10px;
+}
+#addSub {
+  background-color: #F8E00E;
+  color: #FFF;
+  position: absolute;
+  display: none;
+  right: 0;
+  height: 100px;
+  width: 80px;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+#addSub ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+/*HEADER*/
 a {
   color: #FFF;
   text-decoration: none;

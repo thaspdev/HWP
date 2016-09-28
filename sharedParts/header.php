@@ -13,5 +13,13 @@
     }
   ?></div></a>
   <a href="index.php"><h1>HWP</h1></a>
-  <a href="search.php"><div id="search">Search</div></a>
+  <div id="addSearch">
+    <div id="add">ADD</div>
+    <a href="search.php">SEARCH</a>
+  </div>
 </header>
+<div id="addSub">
+    <a href="addHomework.php">HOMEWORK</a>
+    <a>SESSION</a>
+    <a>EXAM</a>
+</div>

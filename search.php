@@ -10,5 +10,6 @@
   </head>
   <body>
     <?php include("sharedParts/header.php");?>
+    <script type="text/javascript" src="script.js"></script>
   </body>
 </html>

@@ -11,10 +11,10 @@
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-  <?php include("sharedParts/head.php");?>
+  <head>
+    <?php include("sharedParts/head.php");?>
     <title><?php echo ucfirst($HWData['name']); ?> - HWP</title>
-</head>
+  </head>
   <body>
     <?php include("sharedParts/header.php");?>
     <section id="homeworkDetails">
@@ -35,5 +35,6 @@
       You still have to work for <?php echo (100-$HWData['percentageDone'])*$HWData['estimatedDuration']/100; ?> minutes</a></br></br>
       </p>
     </section>
+    <script type="text/javascript" src="script.js"></script>
   </body>
 </html>

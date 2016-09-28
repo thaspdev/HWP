@@ -18,3 +18,15 @@ window.onresize=function(){
 window.onload=function(){
   onres();
 }
+document.getElementById("add").onmouseover=function(){
+  document.getElementById("addSub").style.display = "flex";
+}
+document.getElementById("addSub").onmouseover=function(){
+  document.getElementById("addSub").style.display = "flex";
+}
+document.getElementById("add").onmouseout=function(){
+  document.getElementById("addSub").style.display = "none";
+}
+document.getElementById("addSub").onmouseout=function(){
+  document.getElementById("addSub").style.display = "none";
+}

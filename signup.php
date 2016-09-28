@@ -73,5 +73,6 @@
         <input type="submit" name="submitButton" value="Sign Up" class="formButton" id="signFormBut"></input>
       </form>
     </section>
+    <script type="text/javascript" src="script.js"></script>
   </body>
 </html>
