@@ -14,12 +14,24 @@
   ?></div></a>
   <a href="index.php"><h1>HWP</h1></a>
   <div id="addSearch">
-    <div id="add">ADD</div>
+    <?php
+      if (isset($_SESSION['userID'])) {
+    ?>
+        <div id="add">ADD</div>
+    <?php
+      }
+    ?>
     <a href="search.php">SEARCH</a>
   </div>
 </header>
-<div id="addSub">
-    <a href="addHomework.php">HOMEWORK</a>
-    <a>SESSION</a>
-    <a>EXAM</a>
-</div>
+<?php
+  if (isset($_SESSION['userID'])) {
+?>
+    <div id="addSub">
+      <a href="addHomework.php">HOMEWORK</a>
+      <a>SESSION</a>
+      <a>EXAM</a>
+    </div>
+<?php
+  }
+?>
