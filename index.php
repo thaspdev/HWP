@@ -1,7 +1,11 @@
 <?php
   session_start();
   include("sharedParts/connectDB.php");
-  include("sharedParts/teachers/teachersID-NameImport.php");
+  include("sharedParts/teachers/import.php");
+  include("sharedParts/users/import.php");
+  include("sharedParts/subjects/import.php");
+  include("sharedParts/types/import.php");
+  include("sharedParts/groups/import.php");
 ?>
 <!DOCTYPE html>
 <html lang='EN'>
@@ -32,10 +36,16 @@
           <?php
           /*QUERY*/
           if (isset($_SESSION['userID'])) {
-            $HWListAnswer = $DB->prepare('SELECT * FROM homeworkList WHERE (userID = ? OR groupID = ?) AND percentageDone <> \'100\' ORDER BY deadline, percentageDone');
+            $HWListAnswer = $DB->prepare('SELECT * FROM homeworkList WHERE (userID = ? OR groupID = ?) ORDER BY deadline');
             $HWListAnswer->execute(array(htmlspecialchars($_SESSION['userID']), $_SESSION['groupID']));
+            $totalWork = 0;
             while ($HWListData = $HWListAnswer->fetch())
             {
+              $HWDoneAnswer = $DB->prepare('SELECT * FROM homeworkDone WHERE percentageDone <> \'100\' AND hwListID = ?');
+              $HWDoneAnswer->execute(array($HWListData['ID']));
+              $HWDoneData = $HWDoneAnswer->fetch();
+              if (isset($HWDoneData)) {
+                $estimatedPercentage = round(((time() - strtotime($HWListData['dateadded']))/(strtotime($HWListData['deadline']) - strtotime($HWListData['dateadded'])))*10000)/100;
           ?>
           <tr <?php
           echo 'onclick="document.location = \'homework.php?id=' . $HWListData['ID'] . '\';"';
@@ -44,22 +54,23 @@
           ?>>
             <td><?php echo $HWListData['deadline']; ?></td>
             <td><?php echo $HWListData['name']; ?></td>
-            <td><?php echo $HWListData['subject']; ?></td>
-            <td class="notMobile"><?php echo $HWListData['type']; ?></td>
+            <td><?php echo $SubArrayNames[$HWListData['subjectID']]; ?></td>
+            <td class="notMobile"><?php echo $TypeArrayNames[$HWListData['typeID']]; ?></td>
             <td class="notMobile"><?php echo $HWListData['description']; ?></td>
-            <td class="notMobile"><?php echo $HWListData['groupID']; ?></td>
+            <td class="notMobile"><?php echo $GUArray[$HWListData['groupID']]; ?></td>
             <td class="notMobile"><?php echo $TArrayNames[$HWListData['teacherID']]; ?></td>
-            <td class="notMobile"><?php echo $HWListData['userID']; ?></td>
+            <td class="notMobile"><?php echo $UArrayNames[$HWListData['userID']]; ?></td>
             <td class="notMobile"><?php echo $HWListData['dateadded']; ?></td>
             <td><?php echo $HWListData['estimatedDuration']; ?></td>
             <td <?php
-            if ($HWListData['percentageDone']>=$HWListData['estimatedPercentage'])
+            if ($HWDoneData['percentageDone']>=$estimatedPercentage)
               echo 'class="onTime"';
             else
               echo 'class="late"';
-            ?>><?php echo $HWListData['percentageDone'].'%/'.$HWListData['estimatedPercentage'].'%'; ?></td>
+            ?>><?php echo $HWDoneData['percentageDone'].'%/'.$estimatedPercentage.'%'; ?></td>
           </tr>
           <?php
+            }
           }
           $HWListAnswer->closeCursor();
         }

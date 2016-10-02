@@ -43,7 +43,7 @@ form, table {
 #todo, #welcome, #homeworkDetails{
   background-color: #FF389F;
 }
-#timetable, #whatis {
+#timetable, #whatis, #addHW {
   background-color: #FF6602;
 }
 table {
