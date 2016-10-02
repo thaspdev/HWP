@@ -5,6 +5,7 @@
   include("sharedParts/users/import.php");
   include("sharedParts/subjects/import.php");
   include("sharedParts/types/import.php");
+  include("sharedParts/groups/import.php");
 ?>
 <?php
   $HWAnswer = $DB->prepare('SELECT *, DATE_FORMAT(deadline, \'%d/%m/%y\') as deadlineVisible, DATE_FORMAT(dateadded, \'%d/%m/%y\') as dateaddedVisible FROM homeworkList WHERE ID = ?');
@@ -31,7 +32,7 @@
       Subject : <a href="search.php?hw=true&subject=<?php echo $HWData['subjectID'];?>"><?php echo $SubArrayNames[$HWData['subjectID']]; ?></a></br></br>
       Type : <a href="search.php?hw=true&type=<?php echo $HWData['typeID'];?>"><?php echo $TypeArrayNames[$HWData['typeID']]; ?></a></br></br>
       Description : <?php echo $HWData['description']; ?></br></br>
-      Group : <a href="search.php?hw=true&group=<?php echo $HWData['groupID'];?>"><?php echo $HWData['groupID']; ?></a></br></br>
+      Group : <a href="search.php?hw=true&group=<?php echo $HWData['groupID'];?>"><?php echo $GUArray[$HWData['groupID']]; ?></a></br></br>
       Teacher : <a href="search.php?hw=true&teacher=<?php echo $HWData['teacherID'];?>"><?php echo $TArrayNames[$HWData['teacherID']]; ?></a></br></br>
       Added by : <a href="search.php?hw=true&addedby=<?php echo $HWData['userID'];?>"><?php echo $UArrayNames[$HWData['userID']]; ?></a></br></br>
       Added on : <a href="search.php?hw=true&dateadded=<?php echo $HWData['dateadded'];?>"><?php echo $HWData['dateaddedVisible']; ?></a></br></br>
