@@ -1,6 +1,6 @@
 <?php
   if (isset($_SESSION['userID'])) {
-    $GUArray = [];
+    $GUArray = array(0 => "No group");;
     $MainGUArray = [];
     $GUIDArray = [];
     $MainGUIDArray = [];
