@@ -4,7 +4,7 @@
     $MainGUArray = [];
     $GUIDArray = [];
     $MainGUIDArray = [];
-    $GroupsUserAnswer = $DB->prepare('SELECT * FROM groups');
+    $GroupsUserAnswer = $DB->prepare('SELECT * FROM groups WHERE groupID IN (SELECT groupID WHERE userID = ?)');
     $GroupsUserAnswer->execute(array(htmlspecialchars($_SESSION['userID'])));
     while($GroupsUserData = $GroupsUserAnswer->fetch())
     {
