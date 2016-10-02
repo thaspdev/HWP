@@ -41,10 +41,10 @@
             $totalWork = 0;
             while ($HWListData = $HWListAnswer->fetch())
             {
-              $HWDoneAnswer = $DB->prepare('SELECT * FROM homeworkDone WHERE percentageDone <> \'100\' AND hwListID = ?');
+              $HWDoneAnswer = $DB->prepare('SELECT * FROM homeworkDone WHERE hwListID = ?');
               $HWDoneAnswer->execute(array($HWListData['ID']));
               $HWDoneData = $HWDoneAnswer->fetch();
-              if (isset($HWDoneData)) {
+              if (isset($HWDoneData) && $HWDoneData['percentageDone'] != 100) {
                 $estimatedPercentage = round(((time() - strtotime($HWListData['dateadded']))/(strtotime($HWListData['deadline']) - strtotime($HWListData['dateadded'])))*10000)/100;
           ?>
           <tr <?php
