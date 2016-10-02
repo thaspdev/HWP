@@ -10,7 +10,7 @@
         $TeaAnswer = $DB->prepare('SELECT email FROM users WHERE isTeacher = 1 AND userID = ?');
         $TeaAnswer->execute(array($_POST['teacherIDIn']));
         while ($TeaData = $TeacherAnswer->fetch()) {
-          mail($TeaData['email'], "HWP - New request from a student", "A student wants to be part of a group you're involved in. If you accept this request, the student will have access to all the features concerning this group. Please log into your HWP account to accept or decline this request.");
+          mail($TeaData['email'], "HWP - New request from a student", $_SESSION['username'] . "(" . $_SESSION['firstName'] . "" . $_SESSION['lastName'] . " wants to be part of a group you're involved in. If you accept this request, the student will have access to all the features concerning this group. Please log into your HWP account to accept or decline this request.");
         }
       } else {
         header('Location: registerConfirm.php');
