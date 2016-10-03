@@ -14,7 +14,11 @@
   $HWDoneAnswer = $DB->prepare('SELECT * FROM homeworkDone WHERE hwListID = ? AND userID = ?');
   $HWDoneAnswer->execute(array($HWData['ID'], $_SESSION['userID']));
   $HWDoneData = $HWDoneAnswer->fetch();
-  $estimatedPercentage = round(((time() - strtotime($HWData['dateadded']))/(strtotime($HWData['deadline']) - strtotime($HWData['dateadded'])))*10000)/100;
+  if (strtotime(date('d-m-Y',strtotime($HWData['deadline'])))<=time()) {
+    $estimatedPercentage = 100;
+  }else {
+    $estimatedPercentage = round(((strtotime(date('d-m-Y', time()+86400))+((int)date('H',strtotime($HWData['deadline'])))*3600+((int)date('i',strtotime($HWData['deadline'])))*60+((int)date('s',strtotime($HWData['deadline']))) - strtotime($HWData['dateadded']))/(strtotime($HWData['deadline']) - strtotime($HWData['dateadded'])))*10000)/100;
+  }
 ?>
 <!DOCTYPE html>
 <html>

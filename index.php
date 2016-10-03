@@ -31,6 +31,7 @@
           <th class="notMobile">User</th>
           <th class="notMobile">Added on</th>
           <th>Duration</th>
+          <th>To work</th>
           <th>On time?</th>
         </tr>
           <?php
@@ -44,12 +45,21 @@
               $HWDoneAnswer = $DB->prepare('SELECT * FROM homeworkDone WHERE hwListID = ?');
               $HWDoneAnswer->execute(array($HWListData['ID']));
               $HWDoneData = $HWDoneAnswer->fetch();
-              if (isset($HWDoneData) && $HWDoneData['percentageDone'] != 100) {
-                $estimatedPercentage = round(((time() - strtotime($HWListData['dateadded']))/(strtotime($HWListData['deadline']) - strtotime($HWListData['dateadded'])))*10000)/100;
+              if (isset($HWDoneData) && $HWDoneData['percentageDone'] != 100 && strtotime($HWListData['deadline'])>time()) {
+                if (strtotime(date('d-m-Y',strtotime($HWListData['deadline'])))<=time()) {
+                  $estimatedPercentage = 100;
+                }else {
+                  $estimatedPercentage = round(((strtotime(date('d-m-Y', time()+86400))+((int)date('H',strtotime($HWListData['deadline'])))*3600+((int)date('i',strtotime($HWListData['deadline'])))*60+((int)date('s',strtotime($HWListData['deadline']))) - strtotime($HWListData['dateadded']))/(strtotime($HWListData['deadline']) - strtotime($HWListData['dateadded'])))*10000)/100;
+                }
+                $toWork = $HWListData['estimatedDuration']*($estimatedPercentage-$HWDoneData['percentageDone'])/100;
+                if ($toWork<0) {
+                  $toWork = 0;
+                }
+                $totalWork += $toWork;
           ?>
           <tr <?php
           echo 'onclick="document.location = \'homework.php?id=' . $HWListData['ID'] . '\';"';
-          if ($HWListData['deadline']-1<=time())
+          if (strtotime($HWListData['deadline'])-86400<=time())
             echo 'class="urgent"';
           ?>>
             <td><?php echo $HWListData['deadline']; ?></td>
@@ -62,6 +72,7 @@
             <td class="notMobile"><?php echo $UArrayNames[$HWListData['userID']]; ?></td>
             <td class="notMobile"><?php echo $HWListData['dateadded']; ?></td>
             <td><?php echo $HWListData['estimatedDuration']; ?></td>
+            <td><?php echo $toWork; ?></td>
             <td <?php
             if ($HWDoneData['percentageDone']>=$estimatedPercentage)
               echo 'class="onTime"';
@@ -76,6 +87,7 @@
         }
           ?>
       </table>
+      <p><?php echo 'You still have to work for ' . gmdate('H',$totalWork*60) . ' h ' . gmdate('i',$totalWork*60) . ' min today.'; ?></p>
     </section>
     <section id="timetable">
       <h2>Timetable</h2>
