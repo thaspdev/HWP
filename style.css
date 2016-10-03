@@ -36,6 +36,9 @@ section {
   flex-direction: column;
   overflow: hidden;
 }
+section h2 {
+  text-align: center;
+}
 form, table {
   background-color: #4B4B4D;
   width: 100%;
