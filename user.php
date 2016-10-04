@@ -2,6 +2,9 @@
   session_start();
   include("sharedParts/connectDB.php");
   include("sharedParts/groups/import.php");
+  if (!isset($_SESSION['userID'])) {
+    header('Location: login.php');
+  }
 ?>
 <!DOCTYPE html>
 <html lang='EN'>

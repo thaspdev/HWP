@@ -1,6 +1,9 @@
 <?php
   session_start();
   include("sharedParts/connectDB.php");
+  if (!isset($_SESSION['userID'])) {
+    header('Location: login.php');
+  }
 ?>
 <html>
   <head>

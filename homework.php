@@ -6,6 +6,9 @@
   include("sharedParts/subjects/import.php");
   include("sharedParts/types/import.php");
   include("sharedParts/groups/import.php");
+  if (!isset($_SESSION['userID'])) {
+    header('Location: login.php');
+  }
 ?>
 <?php
   $HWAnswer = $DB->prepare('SELECT *, DATE_FORMAT(deadline, \'%d/%m/%y\') as deadlineVisible, DATE_FORMAT(dateadded, \'%d/%m/%y\') as dateaddedVisible FROM homeworkList WHERE ID = ?');
