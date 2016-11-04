@@ -70,6 +70,7 @@ td {
   width: 100px;
   margin: auto;
   margin-top: 10px;
+  cursor: pointer;
 }
 .late {
   background-color: #F63440;
@@ -169,7 +170,7 @@ a {
 #loginSection {
   background-color: #00D054;
 }
-#upExams, #signUpSection, #oneMorestep {
+#upExams, #signUpSection, #oneMorestep, #cookie-banner {
   background-color: #F63440;
 }
 .inputText {
@@ -244,4 +245,31 @@ a {
 }
 .warn {
   background-color: #F63440;
+}
+#cookie-banner {
+  position: fixed;
+  color: #FFF;
+  padding: 10px;
+  padding-top: 0;
+  bottom: 0;
+}
+#cookie-banner a {
+  color: #4B4B4D;
+}
+#cookie-container {
+  display: flex;
+  flex-direction: column;
+}
+#cookie_hide {
+  align-self: flex-end;
+  font-family: 'Oswald';
+  font-weight: bold;
+  border: none;
+  padding: 4px;
+  background-color: #4B4B4D;
+  color: #FFF;
+  cursor: pointer;
+}
+#cookie-§ {
+
 }

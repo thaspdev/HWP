@@ -1,3 +1,13 @@
+<?php if(!isset($_COOKIE['HWP_cookie_consent']) OR $_COOKIE['HWP_cookie_consent']!="yes"){?>
+<div id="cookie-banner">
+  <div id="cookie-container">
+    <p id="cookie-§">This website uses cookies. By continuing your navigation, you accept our use of these cookies. Remember that we are deeply commited to protect your data and your privacy, so we won't use them to track you nor to sell your private information to an advertiser. <a href="our_policy.php#cookies">Learn more about our policy and our use of your cookies...</a></p>
+    <button id="cookie_hide" onclick="
+      document.getElementById('cookie-banner').style.display = 'none';
+    ">OK!</button>
+  </div>
+</div>
+<?php }?>
 <header>
   <a href=<?php
     if (isset($_SESSION['userID'])){
