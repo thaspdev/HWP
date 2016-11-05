@@ -139,7 +139,7 @@ section p{
   padding-right: 10px;
   height: 86.86px;
 }
-#add {
+#add, #user {
   display: flex;
   align-items: center;
   height: 86.86px;
@@ -150,7 +150,6 @@ section p{
   color: #FFF;
   position: absolute;
   display: none;
-
   height: 100px;
   width: 80px;
   flex-direction: column;

@@ -9,15 +9,19 @@
 </div>
 <?php }?>
 <header>
-  <?php if(!isset($_SESSION['userID'])){?>
-    <a href=<"login.php"><div id="user"><?php
-    }
+    <?php if (!isset($_SESSION['userID'])){?>
+    <a href=<"login.php">
+    <?php } ?>
+    <div id="user"><div><?php
     if (isset($_SESSION['username'])){
       echo $_SESSION['username'];
     } else {
       echo 'Log In';
     }
-  ?></div></a>
+  ?></div></div>
+  <?php if (!isset($_SESSION['userID'])){?>
+  </a>
+  <?php } ?>
   <a href="index.php"><h1>HWP</h1></a>
   <div id="addSearch">
     <?php
@@ -35,7 +39,7 @@
 ?>
     <div id="userSub">
       <a href=
-        <?phpecho '"user.php?uID=' . $_SESSION['userID'] . '"';?>>My profile</a>
+        <?php echo '"user.php?uID=' . $_SESSION['userID'] . '"';?>>My profile</a>
       <a href="disconnect.php">Log out</a>
     </div>
     <div id="addSub">
