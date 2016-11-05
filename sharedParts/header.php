@@ -37,6 +37,9 @@
 <?php
   if (isset($_SESSION['userID'])) {
 ?>
+    <div id="userSub">
+      <a href="disconnect.php">Log out</a>
+    </div>
     <div id="addSub">
       <a href="addHomework.php">HOMEWORK</a>
       <a>SESSION</a>
