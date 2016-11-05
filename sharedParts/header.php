@@ -10,7 +10,7 @@
 <?php }?>
 <header>
     <?php if (!isset($_SESSION['userID'])){?>
-    <a href=<"login.php">
+    <a href="login.php">
     <?php } ?>
     <div id="user"><div><?php
     if (isset($_SESSION['username'])){
