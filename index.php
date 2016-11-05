@@ -154,5 +154,24 @@
       </section>
     <?php } ?>
     <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript">
+    function onres(){
+      if (window.innerWidth < 600) {
+        for (var i = 0; i<7; i++){
+          document.getElementById(dWClass[i]).innerHTML=dWAbb[i];
+        }
+      } else {
+        for (var j = 0; j<7; j++){
+          document.getElementById(dWClass[j]).innerHTML=dWLong[j];
+        }
+      }
+    }
+    window.onresize=function(){
+      onres();
+    }
+    window.onload=function(){
+      onres();
+    }
+    </script>
   </body>
 </html>
