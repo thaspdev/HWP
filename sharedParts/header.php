@@ -9,13 +9,9 @@
 </div>
 <?php }?>
 <header>
-  <a href=<?php
-    if (isset($_SESSION['userID'])){
-      echo '"user.php?uID=' . $_SESSION['userID'] . '"';
-    } else {
-      echo '"login.php"';
+  <?php if(!isset($_SESSION['userID'])){?>
+    <a href=<"login.php"><div id="user"><?php
     }
-  ?>><div id="user"><?php
     if (isset($_SESSION['username'])){
       echo $_SESSION['username'];
     } else {
@@ -38,6 +34,8 @@
   if (isset($_SESSION['userID'])) {
 ?>
     <div id="userSub">
+      <a href=
+        <?phpecho '"user.php?uID=' . $_SESSION['userID'] . '"';?>>My profile</a>
       <a href="disconnect.php">Log out</a>
     </div>
     <div id="addSub">
