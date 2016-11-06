@@ -4,5 +4,7 @@ try {
 } catch (Exception $e) {
   die('Error : ' . $e->getMessage());
 }
-setcookie("HWP_cookie_consent", "yes", time()+24*60*60*365, null, null, false, true);//Cookie consent
+if (!isset($_COOKIE['HWP_cookie_consent'])) {
+  setcookie("HWP_cookie_consent", "yes", time()+24*60*60*365, null, null, false, true);//Cookie consent
+}
 ?>
