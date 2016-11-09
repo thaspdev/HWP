@@ -42,14 +42,16 @@
           }
         ?> </br>
         Groups : <?php
-          if (!empty($GUArray)) {
+          if (!empty($GUArray) AND count($GUArray)>1) {
             $first=1;
             foreach ($GUArray as $key => $value) {
-              if ($first == 1) {
-                echo '<a href="search.php?g=1&gID=' . $key . '">' . $value . '</a>';
-                $first = 0;
-              } else {
-                echo ', <a href="search.php?g=1&gID=' . $key . '">' . $value . '</a>';
+              if ($key != 0) {
+                if ($first == 1) {
+                  echo '<a href="search.php?g=1&gID=' . $key . '">' . $value . '</a>';
+                  $first = 0;
+                } else {
+                  echo ', <a href="search.php?g=1&gID=' . $key . '">' . $value . '</a>';
+                }
               }
             }
           } else {
@@ -69,12 +71,30 @@
       } else {
           array_push($PermArray, $PermPData['permissionTypeID']);
       }
-      }
+    }
     // Asks the database if the user is allowed to see the page
     if (!empty($PermArray)) {
       $ProfileAnswer = $DB->prepare('SELECT * FROM users WHERE userID = ?');
       $ProfileAnswer->execute(array(htmlspecialchars($_GET['uID'])));
       $PData = $ProfileAnswer->fetch();
+      //Get group info
+      $GUExtArray = array(0 => "No group");
+      $MainGUExtArray = [];
+      $GUExtIDArray = array(0 => 0);
+      $MainGUExtIDArray = [];
+      $GroupsExtUserAnswer = $DB->prepare('SELECT * FROM groups WHERE groupID IN (SELECT groupID FROM groupMembers WHERE userID = ?)');
+      $GroupsExtUserAnswer->execute(array(htmlspecialchars($_GET['uID'])));
+      while($GroupsExtUserData = $GroupsExtUserAnswer->fetch())
+      {
+        $GUArray[$GroupsUserData['groupID']] = $GroupsUserData['groupName'];
+        if($GroupsUserData['isMainGroup']) {
+          $MainGUArray[$GroupsUserData['groupID']] = $GroupsUserData['groupName'];
+        }// Makes groups' IDs correspond to their names
+        $GUIDArray[$GroupsUserData['groupID']] = $GroupsUserData['groupID'];
+        if($GroupsUserData['isMainGroup']) {
+          $MainGUIDArray[$GroupsUserData['groupID']] = $GroupsUserData['groupID'];
+        }//A list of all the IDs of the user's groups
+      }
     ?>
     <section id="userProfile">
       <h2>PROFILE</h2>
@@ -127,9 +147,16 @@
         ?></br>
         Groups : <?php
           if (in_array(6, $PermArray) || in_array(0, $PermArray)) {
-            if (!empty($GUArray)) {
-              foreach ($GUArray as $key => $value) {
-                echo '<a href="search.php?g=1&gID=' . $key . '">' . $value . '</a>';
+            if (!empty($GUExtArray) AND count($GUExtArray)>1) {
+              foreach ($GUExtArray as $key => $value) {
+                if ($key != 0) {
+                  if ($first == 1) {
+                    echo '<a href="search.php?g=1&gID=' . $key . '">' . $value . '</a>';
+                    $first = 0;
+                  } else {
+                    echo ', <a href="search.php?g=1&gID=' . $key . '">' . $value . '</a>';
+                  }
+                }
               }
             } else {
               echo "they do not belong to any group";
