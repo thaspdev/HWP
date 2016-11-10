@@ -135,9 +135,9 @@
                 ?>
               </select>
               <label for="deadlineDateIn">Deadline (MM/DD/YYYY):</label>
-              <?php if(preg_match("/Mozilla/",$_SERVER['HTTP_USER_AGENT']) AND preg_match("/Android/",$_SERVER['HTTP_USER_AGENT'])) {?>
+              <?php if(preg_match("/Mozilla/",$_SERVER['HTTP_USER_AGENT']) AND preg_match("/Android/",$_SERVER['HTTP_USER_AGENT'])) { ?>
               <input type="text" name="deadlineDateIn" id="deadlineDateIn" class="inputText"></input>
-              <?
+              <?php
                 } else {
               ?>
               <input type="date" name="deadlineDateIn" id="deadlineDateIn" class="inputText"></input>
@@ -161,13 +161,13 @@
             typePredefinedDurations.push(<?php
               echo $duration;
             ?>);
-          <?
+          <?php
         } else{
           ?>
             typeDurations.push(<?php
               echo $duration;
             ?>);
-          <?
+          <?php
         }
       } ?>
       window.onload=function(){
