@@ -16,7 +16,7 @@
     unset($Groups__types[0]);
     $GTstr__ = join("', '",$Groups__types);
     $TypeAnswer = $DB->prepare('SELECT * FROM types WHERE userID = ? OR groupID IN ?');
-    $TypeAnswer->execute(array($_SESSION['userID'], $GTstr));
+    $TypeAnswer->execute(array($_SESSION['userID'], $GTstr__));
     while($TypeData = $TypeAnswer->fetch()) {
       $TypeArrayNames[$TypeData['typeID']] = $TypeData['typeName'];
       $TypeArrayDurations[$TypeData['typeID']] = $TypeData['estimatedDuration'];
