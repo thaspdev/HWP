@@ -14,8 +14,8 @@
     );
     $Groups__types = $GUArray;
     unset($Groups__types[0]);
-    $GTstr__ = join("', '",$Groups__types);
-    $TypeAnswer = $DB->prepare('SELECT * FROM types WHERE userID = ? OR groupID IN ?');
+    $GTstr__ = implode(",",$Groups__types);
+    $TypeAnswer = $DB->prepare('SELECT * FROM types WHERE userID = ? OR groupID IN (?)');
     $TypeAnswer->execute(array($_SESSION['userID'], $GTstr__));
     while($TypeData = $TypeAnswer->fetch()) {
       $TypeArrayNames[$TypeData['typeID']] = $TypeData['typeName'];

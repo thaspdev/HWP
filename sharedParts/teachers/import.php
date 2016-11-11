@@ -12,8 +12,8 @@
     }
     $Groups__NUT = $GUArray;
     unset($Groups__NUT[0]);
-    $GNUTstr__ = join("', '",$Groups__NUT);
-    $NUTeacherAnswer = $DB->prepare('SELECT teacherID, firstName, lastName FROM nonUserTeachers WHERE userID = ? OR groupID IN ?');
+    $GNUTstr__ = implode(",",$Groups__NUT);
+    $NUTeacherAnswer = $DB->prepare('SELECT teacherID, firstName, lastName FROM nonUserTeachers WHERE userID = ? OR groupID IN (?)');
     $NUTeacherAnswer->execute(array($_SESSION['userID'], $GNUTstr__));
     while($NUTData = $NUTeacherAnswer->fetch()) {
       $TArrayNames[(-1)*$NUTData['teacherID']] = $NUTData['firstName'] . " " . $NUTData['lastName'];
