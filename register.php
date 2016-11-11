@@ -1,7 +1,12 @@
 <?php
   session_start();
   include("sharedParts/connectDB.php");
-  if (isset($_POST['usernameIn']) AND isset($_POST['passwordIn']) AND isset($_POST['passwordCheckIn']) AND isset($_POST['emailIn']) AND isset($_POST['fiNameIn']) AND isset($_POST['laNameIn']) AND isset($_POST['isWhatIn']) AND ($_POST['passwordIn'] == $_POST['passwordCheckIn'])) {
+  //I put these redirection here because it wouldn't work otherwise
+  if (isset($_POST['passwordIn']) AND strlen($_POST['passwordIn'])<8) {
+    header('Location: signup.php?passwordTooShort=1');
+  } elseif (isset($_POST['usernameIn']) AND strlen($_POST['usernameIn'])<3) {
+    header('Location: signup.php?usernameTooShort=1');
+  } elseif (isset($_POST['usernameIn']) AND isset($_POST['passwordIn']) AND isset($_POST['passwordCheckIn']) AND isset($_POST['emailIn']) AND isset($_POST['fiNameIn']) AND isset($_POST['laNameIn']) AND isset($_POST['isWhatIn']) AND ($_POST['passwordIn'] == $_POST['passwordCheckIn'])) {
     $UserConnectAnswer = $DB->prepare('SELECT username FROM users WHERE username = ?');
     $UserConnectAnswer->execute(array(htmlspecialchars($_POST['usernameIn'])));
     $UConnectTest = $UserConnectAnswer->fetch();
