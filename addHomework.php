@@ -83,9 +83,9 @@
               <label for="subjectIn">Subject :</label>
               <select name="subjectIn" id="subjectIn">
                 <option value="" selected disabled>Please choose a subject</option>
-                <?php foreach ($TArrayNames as $Tid => $Tname) {
+                <?php foreach ($SubArrayNames as $Subid => $Subname) {
                   ?>
-                    <option value=<?php echo '"' . $Tid . '"'; ?>><?php echo $Tname;?></option>
+                    <option value=<?php echo '"' . $Subid . '"'; ?>><?php echo $Subname;?></option>
                   <?php
                 } ?>
               </select>
@@ -144,7 +144,7 @@
               <?php
                 }
               ?>
-              <label for="deadlineDateIn">Deadline (HH:MM):</label>
+              <label for="deadlineTimeIn">Deadline (HH:MM):</label>
               <input type="time" name="deadlineTimeIn" id="deadlineTimeIn" class="inputText"></input>
               <input type="submit" name="manually" value="Add it!" class="formButton"></input>
             </div>
