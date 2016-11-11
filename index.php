@@ -39,8 +39,8 @@
           if (isset($_SESSION['userID'])) {
             $GArrayHW__ = $GUArray;
             unset($GArrayHW__[0]);
-            $GstrHW__ = join("', '",$GArrayHW);
-            $HWListAnswer = $DB->prepare('SELECT * FROM homeworkList WHERE (userID = ? OR groupID IN ?) ORDER BY deadline');
+            $GstrHW__ = implode(",",$GArrayHW__);
+            $HWListAnswer = $DB->prepare('SELECT * FROM homeworkList WHERE (userID = ? OR groupID IN (?)) ORDER BY deadline');
             $HWListAnswer->execute(array(htmlspecialchars($_SESSION['userID']), $GstrHW__));
             $totalWork = 0;
             while ($HWListData = $HWListAnswer->fetch())
