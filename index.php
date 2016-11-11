@@ -40,8 +40,13 @@
             $GArrayHW__ = $GUArray;
             unset($GArrayHW__[0]);
             $GstrHW__ = implode(",",$GArrayHW__);
-            $HWListAnswer = $DB->prepare('SELECT * FROM homeworkList WHERE (userID = ? OR groupID IN (?)) ORDER BY deadline');
-            $HWListAnswer->execute(array(htmlspecialchars($_SESSION['userID']), $GstrHW__));
+            if ($GstrHW__ == "") {
+              $HWListAnswer = $DB->prepare('SELECT * FROM homeworkList WHERE userID = ? ORDER BY deadline');
+              $HWListAnswer->execute(array(htmlspecialchars($_SESSION['userID'])));
+            } else {
+              $HWListAnswer = $DB->prepare('SELECT * FROM homeworkList WHERE (userID = ? OR groupID IN (?)) ORDER BY deadline');
+              $HWListAnswer->execute(array(htmlspecialchars($_SESSION['userID']), $GstrHW__));
+            }
             $totalWork = 0;
             while ($HWListData = $HWListAnswer->fetch())
             {
