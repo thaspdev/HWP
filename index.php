@@ -152,9 +152,9 @@
            timetables, the students, the staff and the teachers, or the subjects.
         </p>
         <h3 class="notConnh3">How can it help you?</h3>
-        <p class="notConn">HWP was designed by a procrastinator, for procrastinators ;
+        <p class="notConn">HWP was designed by a procrastinator, for procrastinators,
            in order for them to get rid of this bad habit that most of the time
-           makes people really stressful. And there are several ways it can do it.
+           makes people really stressful. And there are several ways it can help.
             Indeed, its homework management system (HMS) allows you to get instant
             access to your to-do tasks, and plans your amount of work in advance,
             so that you can keep organized and beat your procrastination!
