@@ -330,6 +330,22 @@ optgroup {
   color: #FFF;
   cursor: pointer;
 }
-#cookie-§ {
-
+#editPercentageDone {
+  cursor: pointer;
+  background-color: #FFF;
+  color: #4B4B4D;
+}
+#editPerDForm {
+  display: none;
+  flex-direction: row;
+  margin-left: 20px;
+}
+#editHWPerDBut {
+  margin-left: 10px;
+  background-color: #FF389F;
+  color: #FFF;
+  cursor: pointer;
+}
+#hwFirstPart {
+  margin: 0;
 }
