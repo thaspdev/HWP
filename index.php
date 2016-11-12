@@ -53,6 +53,13 @@
               $HWDoneAnswer = $DB->prepare('SELECT * FROM homeworkDone WHERE hwListID = ?');
               $HWDoneAnswer->execute(array($HWListData['ID']));
               $HWDoneData = $HWDoneAnswer->fetch();
+              if (!$HWDoneData){
+                $HWDoneCreate = $DB->prepare("INSERT INTO homeworkDone(hwListID,userID,percentageDone) VALUES (?,?,0)");
+                $HWDoneCreate->execute(array($HWListData['ID'],$_SESSION['userID']));
+                $HWDoneAnswer = $DB->prepare('SELECT * FROM homeworkDone WHERE hwListID = ?');
+                $HWDoneAnswer->execute(array($HWListData['ID']));
+                $HWDoneData = $HWDoneAnswer->fetch();
+              }
               if (isset($HWDoneData) && $HWDoneData['percentageDone'] != 100 && strtotime($HWListData['deadline'])>time()) {
                 if (strtotime(date('d-m-Y',strtotime($HWListData['deadline'])))<=time()) {
                   $estimatedPercentage = 100;
