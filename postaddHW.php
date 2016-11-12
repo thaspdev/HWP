@@ -14,13 +14,13 @@
           $GroupAdminQuery = $DB->prepare("SELECT isAdmin FROM groupMembers WHERE userID = ? AND groupID = ?");
           $GroupAdminQuery->execute(array($_SESSION['userID'],$_POST['groupIn']));
           $GAData = $GroupAdminQuery->fetch();
-          if ($GAData['isAdmin']){
+          if (($GAData['isAdmin'] AND $_POST['groupIn'] != 0) OR $_POST['groupIn'] == 0){
             $deadline = date("Y-m-d H:i:s", strtotime(htmlspecialchars($_POST['deadlineDateIn']) . ' ' . htmlspecialchars($_POST['deadlineTimeIn']) . ':00'));
             $InsertHW = $DB->prepare('INSERT INTO homeworkList(subjectID,typeID,name,description,userID,teacherID,groupID,deadline,estimatedDuration) VALUES (?,?,?,?,?,?,?,?,?)');
             $InsertHW->execute(array(htmlspecialchars($_POST['subjectIn']),htmlspecialchars($_POST['typeIn']),htmlspecialchars($_POST['HWNameIn']), htmlspecialchars($_POST['descriptionIn']), htmlspecialchars($_SESSION['userID']), htmlspecialchars($_POST['teacherIn']), htmlspecialchars($_POST['groupIn']), $deadline, htmlspecialchars($_POST['durationIn'])));
             header("Location: index.php?HWadded=1");
           } else {
-            header('Location: addHomework.php?invalidInput=1');
+            header('Location: addHomework.php?actionNotAllowed=1');
           }
         } else {
           header('Location: addHomework.php?invalidInput=1');
