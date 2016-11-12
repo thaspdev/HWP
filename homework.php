@@ -45,7 +45,7 @@
       Group : <a href="search.php?hw=true&group=<?php echo $HWData['groupID'];?>"><?php echo $GUArray[$HWData['groupID']]; ?></a></br></br>
       Teacher : <a href="search.php?hw=true&teacher=<?php echo $HWData['teacherID'];?>"><?php echo $TArrayNames[$HWData['teacherID']]; ?></a></br></br>
       Added by : <a href="search.php?hw=true&addedby=<?php echo $HWData['userID'];?>"><?php echo $UArrayNames[$HWData['userID']]; ?></a></br></br>
-      Added on : <a href="search.php?hw=true&dateadded=<?php echo $HWData['dateadded'];?>"><?php echo $HWData['dateaddedVisible']; ?></a></br></br>
+      Added on : <a href="search.php?hw=true&dateadded=<?php echo $HWData['dateadded'];?>"><?php echo $HWData['dateadded']; ?></a></br></br>
       Done : <a href="search.php?hw=true&percentageDone=<?php echo $HWDoneData['percentageDone'];?>"><?php echo $HWDoneData['percentageDone']; ?> %</a> <span id="editPercentageDone">EDIT</span></p>
       <form id="editPerDForm" action="editHWPerDone.php" method="post"><input type="hidden" name="HWID" value=<?php echo $_GET['id'];?>></input><input type="number" name="editPerDIn" min="0" max="100" value=<?php echo '"' . $HWDoneData['percentageDone'] . '"'; ?>></input><input id="editHWPerDBut" type="submit" name="submitBut" value="OK!"></input></form></br></br>
       <p>
